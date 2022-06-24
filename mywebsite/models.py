@@ -28,10 +28,10 @@ class Project(models.Model):
         try:
             this = Project.objects.get(id=self.id)
             if this.main_preview:
-                this.main_preview.delete()
+                this.main_preview.delete(save=False)
         except ObjectDoesNotExist:
             pass
-        super().save(*args, **kwargs)
+        super(Project, self).save(*args, **kwargs)
 
 
 class Image(models.Model):
