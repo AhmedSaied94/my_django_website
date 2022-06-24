@@ -1,6 +1,7 @@
 from datetime import date
 from unicodedata import name
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your models here.
 
@@ -22,6 +23,15 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        try:
+            this = Project.objects.get(id=self.id)
+            if this.image_file:
+                this.image_file.delete()
+        except ObjectDoesNotExist:
+            pass
+        super(Project, self).save(*args, **kwargs)
 
 
 class Image(models.Model):
