@@ -16,7 +16,8 @@ class Project(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     skills = models.ManyToManyField('Skill', related_name='projects')
-    main_preview = models.ImageField(upload_to='projects/main_preview')
+    main_preview = models.ImageField(
+        null=True, blank=True, upload_to='projects/main_preview')
     date = models.DateField()
 
     def __str__(self):
