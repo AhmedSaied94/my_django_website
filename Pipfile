@@ -15,6 +15,7 @@ django-extensions = "*"
 gunicorn = "*"
 whitenoise = "*"
 cloudinary = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 
