@@ -27,8 +27,8 @@ class Project(models.Model):
     def save(self, *args, **kwargs):
         try:
             this = Project.objects.get(id=self.id)
-            if this.image_file:
-                this.image_file.delete()
+            if this.main_preview:
+                this.main_preview.delete()
         except ObjectDoesNotExist:
             pass
         super(Project, self).save(*args, **kwargs)
