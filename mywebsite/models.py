@@ -31,7 +31,7 @@ class Project(models.Model):
                 this.main_preview.delete()
         except ObjectDoesNotExist:
             pass
-        super(Project).save(self, *args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class Image(models.Model):
