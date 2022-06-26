@@ -8,5 +8,5 @@ from .models import Project
 
 
 class ProjectView(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by('-date')
     serializer_class = ProjectSerializer
