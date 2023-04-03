@@ -4,4 +4,4 @@ from .views import ProjectView
 
 router = DefaultRouter()
 
-router.register(r"projects", ProjectView, basename="projects")
+router.register(r'projects', ProjectView, basename='projects')

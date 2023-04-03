@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from mywebsite.models import Project
+from .models import *
 
 
 class NewRepresent(serializers.StringRelatedField):
@@ -8,20 +8,20 @@ class NewRepresent(serializers.StringRelatedField):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    date = serializers.DateField("%m %y")
+    date = serializers.DateField('%m %y')
     skills = NewRepresent()
     gallery = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
         fields = [
-            "id",
-            "title",
-            "date",
-            "desc",
-            "skills",
-            "main_preview",
-            "gallery",
+            'id',
+            'title',
+            'date',
+            'desc',
+            'skills',
+            'main_preview',
+            'gallery',
         ]
 
     def get_gallery(self, obj):
