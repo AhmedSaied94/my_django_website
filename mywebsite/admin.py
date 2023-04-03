@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import *
+import mywebsite.models as mo
 
 # Register your models here.
 
-admin.site.register(Skill)
-admin.site.register(Project)
-admin.site.register(Gallery)
-admin.site.register(Image)
+admin.site.register(mo.Skill)
+admin.site.register(mo.Project)
+admin.site.register(mo.Gallery)
+admin.site.register(mo.Image)

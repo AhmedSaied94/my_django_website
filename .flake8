@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 150
+exclude =
+    .git,
+    *migrations*,
+    core/migrationsو
+    .flake8,
+    apps.py,
+extend-ignore = E203, DJ01, W605
