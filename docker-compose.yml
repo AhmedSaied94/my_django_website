@@ -14,13 +14,13 @@ services:
       - "host.docker.internal:host-gateway"
   web:
     image: "ahmedsaied94/saied_back_image:latest"
-    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn --worker 3 core.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000
       - 3000:3000
     volumes:
-      - ./static:/usr/src/app/static
-      - ./media:/usr/src/app/media
+      - ~/mywebsite/static:/usr/src/app/static
+      - ~/mywebsite/media:/usr/src/app/media
     env_file: .env
     # env_file: ./backend/.env
     # environment:
