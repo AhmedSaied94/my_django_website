@@ -14,9 +14,9 @@ services:
       - "host.docker.internal:host-gateway"
   web:
     image: "ahmedsaied94/saied_back_image:latest"
-    command: gunicorn --workers 3 core.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn --worker core.wsgi:application --bind 0.0.0.0:8000
     ports:
-      - 80:8000
+      - 8000:8000
       - 3010:3010
     volumes:
       - ~/my_website/static:/usr/src/app/static
