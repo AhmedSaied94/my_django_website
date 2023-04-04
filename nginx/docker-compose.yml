@@ -8,6 +8,8 @@ services:
       - 443:443
     volumes:
       - ~/my_website/my_django_website/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
       # - -v /var/www/html:/var/www/html
       # extra_hosts:
       #   - "docker.host:host-gateway"
