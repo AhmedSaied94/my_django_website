@@ -39,8 +39,7 @@ services:
     #   - RUNMAIN=1
     depends_on:
       - db
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    network_mode: "host"
 
 volumes:
   postgres_data:
