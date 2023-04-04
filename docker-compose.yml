@@ -16,8 +16,8 @@ services:
     image: "ahmedsaied94/saied_back_image:latest"
     command: gunicorn --workers 3 core.wsgi:application --bind 0.0.0.0:8000
     ports:
-      - 8000:8000
-      - 3000:3000
+      - 80:8000
+      - 3010:3010
     volumes:
       - ~/mywebsite/static:/usr/src/app/static
       - ~/mywebsite/media:/usr/src/app/media
