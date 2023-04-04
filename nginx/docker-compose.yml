@@ -7,7 +7,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ~/mywebsite/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ~/my_website/nginx.conf:/etc/nginx/conf.d/nginx.conf
       # - -v /var/www/html:/var/www/html
       # extra_hosts:
       #   - "docker.host:host-gateway"

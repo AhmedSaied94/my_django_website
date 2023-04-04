@@ -19,8 +19,8 @@ services:
       - 80:8000
       - 3010:3010
     volumes:
-      - ~/mywebsite/static:/usr/src/app/static
-      - ~/mywebsite/media:/usr/src/app/media
+      - ~/my_website/static:/usr/src/app/static
+      - ~/my_website/media:/usr/src/app/media
     env_file: .env
     # env_file: ./backend/.env
     # environment:
