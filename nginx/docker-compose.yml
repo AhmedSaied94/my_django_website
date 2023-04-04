@@ -7,7 +7,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ~/mywebsite/my_django_website/nginx:/etc/nginx
+      - ~/mywebsite/my_django_website/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       # - -v /var/www/html:/var/www/html
       # extra_hosts:
       #   - "docker.host:host-gateway"
