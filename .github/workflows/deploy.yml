@@ -1,0 +1,49 @@
+name: CI/CD deploy test
+# deploy
+on:
+  push:
+    branches: [ amazon ]
+
+env:
+  DOMAIN: iff-back-test.div-systems.com
+  FRONT_END: https://iff-test.div-systems.com
+jobs:
+  deploy:
+    name: Deploy TESTING
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/testing'
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v1
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/dev.key
+          chmod 600 ~/.ssh/dev.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName ${{ secrets.INSTANCE_IP }}
+            User ${{ secrets.INSTANCE_USER }}
+            IdentityFile ~/.ssh/dev.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.INSTANCE_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY_DEV }}
+          SSH_HOST: ${{ secrets.INSTANCE_IP }}
+      - name: prepare and deploy
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh -i ~/.ssh/dev.key -o StrictHostKeyChecking=no ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }} << 'ENDSSH'
+            cd /home/ubuntu/my_website/my_django_website
+            docker compose stop web
+            docker compose stop nginx
+            docker compose start
+            cd nginx
+            docker compose start
+            echo DDOOOOOOOOOOOOOOONE
+          ENDSSH
