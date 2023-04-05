@@ -20,6 +20,7 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
       - name: Configure SSH
         run: |
+          echo ${{ secrets.SSH_KEY }}
           mkdir -p ~/.ssh/
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/dev.key
           chmod 600 ~/.ssh/dev.key
@@ -32,13 +33,13 @@ jobs:
           END
         env:
           SSH_USER: ${{ secrets.INSTANCE_USER }}
-          SSH_KEY: ${{ secrets.SSH_KEY_DEV }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_HOST: ${{ secrets.INSTANCE_IP }}
       - name: prepare and deploy
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          ssh -i ~/.ssh/dev.key -vvv ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }} << 'ENDSSH'
+          ssh -i ~/.ssh/dev.key -vvv -o StrictHostKeyChecking=no ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }} << 'ENDSSH'
             cd /home/ubuntu/my_website/my_django_website
             docker compose stop web
             docker compose stop nginx
