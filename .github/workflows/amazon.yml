@@ -105,7 +105,6 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          cat .env
           scp -i ~/.ssh/dev.key  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.yml ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }}:/home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
           ssh -i ~/.ssh/dev.key -o StrictHostKeyChecking=no ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP}} << 'ENDSSH'
             cd /home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
