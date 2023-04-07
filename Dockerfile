@@ -51,7 +51,7 @@ RUN apk update && apk add python3-dev \
 
 RUN apk add --no-cache freetype-dev
 COPY ./requirements.txt /usr/src/app/requirements.txt
-RUN pip install -r /usr/src/app/requirements.txt
+RUN pip3 install -r /usr/src/app/requirements.txt
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
