@@ -40,7 +40,7 @@ RUN apk update \
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add jpeg-dev zlib-dev libjpeg \
-    && pip install Pillow \
+    && pip3 install Pillow \
     && apk del build-deps
 RUN apk update && apk add python3-dev \
     gcc \
