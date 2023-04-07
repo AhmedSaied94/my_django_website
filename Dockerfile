@@ -59,7 +59,7 @@ COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod 777 /usr/src/app/entrypoint.sh
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 RUN ["chmod", "777", "/usr/src/app/entrypoint.sh"]
-RUN pip install debugpy==1.5.1
+RUN pip3 install debugpy==1.5.1
 # copy project
 COPY ./ /usr/src/app/
 
