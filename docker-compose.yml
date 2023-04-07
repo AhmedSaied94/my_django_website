@@ -13,8 +13,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
   web:
-    image: "ahmedsaied94/saied_back_image:latest"
-    command: gunicorn --workers 3 core.wsgi:application --bind 0.0.0.0:8000
+    image: ${AMAZON_IMAGE}
+    command: gunicorn --workers=3 core.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000
       - 3010:3010
