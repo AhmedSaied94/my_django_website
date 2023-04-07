@@ -62,7 +62,6 @@ RUN ["chmod", "777", "/usr/src/app/entrypoint.sh"]
 RUN pip install debugpy==1.5.1
 # copy project
 COPY ./ /usr/src/app/
-COPY ./.env /usr/src/app/
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
