@@ -56,12 +56,13 @@ RUN pip3 install -r /usr/src/app/requirements.txt
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
+COPY ./ /usr/src/app/
 RUN chmod 777 /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 RUN ["chmod", "777", "/usr/src/app/entrypoint.sh"]
 RUN pip3 install debugpy==1.5.1
 # copy project
-COPY ./ /usr/src/app/
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

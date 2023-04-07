@@ -5,7 +5,7 @@ on:
     branches: [ amazon ]
 
 env:
-  AMAZON_IMAGE: ahmedsaied94/saied_back_image:latest
+  AMAZON_IMAGE: ahmedsaied94/saied_back_image
   DOMAIN: ahmed-saeed.site
   ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
   BUILD_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
