@@ -37,8 +37,8 @@ services:
     #   - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
     #   - REDIS_HOST=redis
     #   - RUNMAIN=1
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     network_mode: "host"
 
 volumes:
