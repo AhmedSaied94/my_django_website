@@ -76,7 +76,7 @@ jobs:
           echo DEBUG=1 >> .env
           echo SQL_ENGINE=django.db.backends.postgresql >> .env
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo SQL_DATABASE=${{ secrets.SQL_DATABASE }} >> .env
+          echo SQL_NAME=${{ secrets.SQL_NAME }} >> .env
           echo SQL_USER=${{ secrets.SQL_USER }} >> .env
           echo SQL_PASSWORD=${{ secrets.SQL_PASSWORD }} >> .env
           echo SQL_HOST=${{ secrets.SQL_HOST }} >> .env
