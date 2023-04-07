@@ -16,7 +16,7 @@ RUN pip3 install --no-cache --upgrade pip setuptools
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev libffi-dev openssl-dev \
     && apk add postgresql-dev \
-    && pip install psycopg2 \
+    && pip3 install psycopg2 \
     && apk del build-deps
 
 
