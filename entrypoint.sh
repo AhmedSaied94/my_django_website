@@ -16,14 +16,5 @@ DUMB=data.json
 python manage.py flush --no-input
 python manage.py migrate
 python manage.py collectstatic --no-input --clear
-# if [ -f "$DUMB" ]; then
-#   echo $DUMB
-#   python manage.py loaddata data.json
-# fi
-
-
-#echo "*       *       *       *       *       /usr/local/bin/python /usr/src/app/manage.py process_subscriptions" >> /etc/crontabs/root
-#crontab -l
-#crond
 
 exec "$@"
