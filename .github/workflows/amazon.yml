@@ -56,7 +56,7 @@ jobs:
 
       - name: Build images
         run: |
-          docker build -t ${{ env.AMAZON_IMAGE }} --no-cache
+          docker build -t ${{ env.AMAZON_IMAGE }} --no-cache .
       - name: Push images
         run: |
           docker push ${{ env.AMAZON_IMAGE }}
