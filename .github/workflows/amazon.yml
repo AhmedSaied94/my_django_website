@@ -110,7 +110,7 @@ jobs:
             cd /home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
             source .env
             docker system prune -f
-            docker login u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+            docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
             docker pull ${{ env.AMAZON_IMAGE }}
             docker compose -f nginx/docker-compose.yml start -d --renew-anon-volumes
             docker compose -f docker-compose.yml up -d --renew-anon-volumes
