@@ -14,6 +14,10 @@ fi
 
 python manage.py migrate
 python manage.py collectstatic --no-input --clear
+if [-f data.json]
+then
+    python manage.py loaddata data.json
+fi
 
 
 
