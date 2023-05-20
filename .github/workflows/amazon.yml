@@ -112,6 +112,6 @@ jobs:
             docker system prune -f
             docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
             docker pull ${{ env.AMAZON_IMAGE }}
-            docker compose -f nginx/docker-compose.yml start -d --renew-anon-volumes
-            docker compose -f docker-compose.yml up -d --renew-anon-volumes
+            docker compose -f nginx/docker-compose.yml start 
+            docker compose -f docker-compose.yml up 
           ENDSSH
