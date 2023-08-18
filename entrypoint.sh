@@ -15,7 +15,7 @@ fi
 python manage.py migrate
 python manage.py collectstatic --no-input --clear
 
-python manage.py loaddata media/new_data.json
+# python manage.py loaddata media/new_data.json
 
 
 
