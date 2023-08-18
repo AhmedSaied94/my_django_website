@@ -14,10 +14,8 @@ fi
 
 python manage.py migrate
 python manage.py collectstatic --no-input --clear
-if [-e "media/new_data.json"]
-then
-    python manage.py loaddata media/new_data.json
-fi
+
+python manage.py loaddata media/new_data.json
 
 
 
