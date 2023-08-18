@@ -7,7 +7,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data/
+      - ~/my_website/my_django_website/postgres_data:/var/lib/postgresql/data/
     networks:
       - my_website
   web:
@@ -17,8 +17,8 @@ services:
       - 8000:8000
       - 3010:3010
     volumes:
-      - ./static:/usr/src/app/static
-      - ./media:/usr/src/app/media
+      - ~/my_website/my_django_website/static:/usr/src/app/static
+      - ~/my_website/my_django_website/media:/usr/src/app/media
     env_file: .env
     # env_file: ./backend/.env
     # environment:
