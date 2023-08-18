@@ -193,3 +193,5 @@ logging.config.dictConfig(
         },
     }
 )
+
+CSRF_TRUSTED_ORIGINS = ["localhost:3000", "https://ahmed-saeed.site", "https://ahmed-saeed.site/"]
