@@ -20,7 +20,7 @@ from mywebsite.urls import router
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("ahmed/as/admin/panel", admin.site.urls),
+    path("ahmed/as/admin/panel/", admin.site.urls),
     # path('', include('mywebsite.urls'))
     path("api/", include(router.urls)),
 ]
