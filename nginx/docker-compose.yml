@@ -8,8 +8,8 @@ services:
       - 443:443
     volumes:
       - ~/my_website/my_django_website/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
-      - ~/my_website/my_django_website/static:/home/ubuntu/my_website/static
-      - ~/my_website_my_django_website/media:/home/ubuntu/my_website/media
+      - ~/my_website/static:/home/ubuntu/my_website/static
+      - ~/my_website/media:/home/ubuntu/my_website/media
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/lib/letsencrypt:/var/lib/letsencrypt
       # - -v /var/www/html:/var/www/html

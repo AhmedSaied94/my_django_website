@@ -17,8 +17,8 @@ services:
       - 8000:8000
       - 3010:3010
     volumes:
-      - ~/my_website/my_django_website/static:/usr/src/app/static
-      - ~/my_website/my_django_website/media:/usr/src/app/media
+      - ~/my_website/static:/usr/src/app/static
+      - ~/my_website/media:/usr/src/app/media
     env_file: .env
     # env_file: ./backend/.env
     # environment:
