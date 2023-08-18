@@ -1,7 +1,4 @@
-from datetime import date
-from unicodedata import name
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
 
 # Create your models here.
 
@@ -16,36 +13,38 @@ class Skill(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
-    skills = models.ManyToManyField('Skill', related_name='projects')
-    main_preview = models.ImageField(
-        null=True, blank=True, upload_to='projects/main_preview')
+    skills = models.ManyToManyField("Skill", related_name="projects")
+    main_preview = models.ImageField(null=True, blank=True, upload_to="projects/main_preview")
     date = models.DateField()
+    github_back_link = models.URLField(null=True, blank=True)
+    github_front_link = models.URLField(null=True, blank=True)
+    live_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        try:
-            this = Project.objects.get(id=self.id)
-            if this.main_preview:
-                this.main_preview.delete(save=False)
-        except ObjectDoesNotExist:
-            pass
-        super(Project, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         this = Project.objects.get(id=self.id)
+    #         if this.main_preview:
+    #             this.main_preview.delete(save=False)
+    #     except ObjectDoesNotExist:
+    #         pass
+    #     super(Project, self).save(*args, **kwargs)
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='projects/images')
-    gallery = models.ForeignKey(
-        'gallery', related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="projects/images")
+    title = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    gallery = models.ForeignKey("gallery", related_name="images", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.image.name
 
 
 class Gallery(models.Model):
-    project = models.OneToOneField(
-        'Project', related_name='gallery', on_delete=models.CASCADE)
+    project = models.OneToOneField("Project", related_name="gallery", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.project.title} gallery'
+        return f"{self.project.title} gallery"

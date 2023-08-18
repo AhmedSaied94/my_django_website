@@ -1,17 +1,15 @@
 version: '3.7'
 
 services:
-  # db:
-  #   image: "postgres:11"
-  #   container_name: "postgres"
-  #   environment:
-  #     - "POSTGRES_HOST_AUTH_METHOD=trust"
-  #   volumes:
-  #     - ~/my_website/postgres_data:/var/lib/postgresql/data/
-  #   ports:
-  #     - 5800:5432
-  #   extra_hosts:
-  #     - "host.docker.internal:host-gateway"
+  postgres:
+    image: "postgres:11"
+    container_name: ${SQL_HOST}
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    networks:
+      - my_website
   web:
     image: ${AMAZON_IMAGE}
     command: gunicorn --workers=3 core.wsgi:application --bind 0.0.0.0:8000
@@ -19,8 +17,8 @@ services:
       - 8000:8000
       - 3010:3010
     volumes:
-      - ~/my_website/static:/usr/src/app/static
-      - ~/my_website/media:/usr/src/app/media
+      - ./static:/usr/src/app/static
+      - ./media:/usr/src/app/media
     env_file: .env
     # env_file: ./backend/.env
     # environment:
@@ -39,11 +37,14 @@ services:
     #   - RUNMAIN=1
     # depends_on:
     #   - db
-    network_mode: "host"
+    depends_on:
+      - postgres
+    networks:
+      - my_website
 
 volumes:
   postgres_data:
 
 
 networks:
-  main:
+  my_website:

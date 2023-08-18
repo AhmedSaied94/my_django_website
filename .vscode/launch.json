@@ -9,13 +9,13 @@
             "type": "python",
             "request": "attach",
             "connect": {
-                "host": "44.193.239.27",
+                "host": "localhost",
                 "port": 3010
             },
             "pathMappings": [
                 {
                     "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "/home/ubuntu/my_website/my_django_website"
+                    "remoteRoot": "/usr/src/app"
                 }
             ],
             "justMyCode": true
