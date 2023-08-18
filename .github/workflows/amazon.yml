@@ -108,10 +108,13 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          scp -i ~/.ssh/dev.key  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.yml ./potgres_data ./media ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }}:/home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
+          scp -i ~/.ssh/dev.key  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.yml ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP }}:/home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
           ssh -i ~/.ssh/dev.key -o StrictHostKeyChecking=no ${{ secrets.INSTANCE_USER }}@${{ secrets.INSTANCE_IP}} << 'ENDSSH'
             cd /home/${{ secrets.INSTANCE_USER }}/my_website/my_django_website
             source .env
+            git fetch --all
+            git switch amazon
+            git pull
             docker system prune -f
             docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
             docker pull ${{ env.AMAZON_IMAGE }}

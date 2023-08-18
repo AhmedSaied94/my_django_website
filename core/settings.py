@@ -193,3 +193,5 @@ logging.config.dictConfig(
         },
     }
 )
+
+LOGIN_URL = "admin:login"
