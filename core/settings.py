@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -195,3 +196,52 @@ logging.config.dictConfig(
 )
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://ahmed-saeed.site", "https://ahmed-saeed.site/"]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Ahmed Saied",
+    "site_header": "Ahmed Saied",
+    "site_logo": "ahmedsaied.jpg",
+    "welcome_sign": "Welcome to Ahmed Saied Panel",
+    "search_model": "mywebsite.Project",
+    "user_avatar": "ahmedsaied.jpg",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["mywebsite"],
+    "custom_links": {
+        "Project": [
+            {
+                "name": "Create Project",
+                "url": "/progects/project/add/",
+                "icon": "fas fa-plus-circle",
+                "permissions": ["mywebsite.add_project"],
+            },
+        ],
+    },
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "mywebsite": "fas fa-project-diagram",
+        "mywebsite.Gallery": "fas fa-images",
+        "mywebsite.Image": "fas fa-image",
+        "mywebsite.Project": "fas fa-project-diagram",
+        "mywebsite.Skill": "fas fa-star",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": True,
+    "custom_css": None,
+    "custom_js": None,
+    "show_ui_builder": True,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs",
+        "mywebsite.project": "horizontal_tabs",
+        "mywebsite.gallery": "vertical_tabs",
+        "mywebsite.image": "horizontal_tabs",
+        "mywebsite.skill": "vertical_tabs",
+    },
+}

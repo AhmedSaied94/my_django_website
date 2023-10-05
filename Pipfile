@@ -20,6 +20,7 @@ dj-database-url = "*"
 flake8 = "*"
 flake8-django = "*"
 debugpy = "==1.5.1"
+django-jazzmin = "*"
 
 [dev-packages]
 autopep8 = "*"

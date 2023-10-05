@@ -1,5 +1,13 @@
 {
+    "triggerTaskOnSave.tasks": {
+        "Rebuild and run": [
+            "*.py"
+        ]
+    },
+    "triggerTaskOnSave.on": true,
     "editor.formatOnSave": true,
+    "triggerTaskOnSave.showNotifications": true,
+    "triggerTaskOnSave.showStatusBarToggle": true,
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length",
