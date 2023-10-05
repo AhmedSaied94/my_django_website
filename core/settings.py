@@ -195,7 +195,7 @@ logging.config.dictConfig(
     }
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://ahmed-saeed.site", "https://ahmed-saeed.site/"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://ahmedsaied.info", "https://ahmedsaied.info/"]
 
 JAZZMIN_SETTINGS = {
     "site_title": "Ahmed Saied",

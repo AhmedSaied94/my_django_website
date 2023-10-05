@@ -6,7 +6,7 @@ on:
 
 env:
   AMAZON_IMAGE: ahmedsaied94/saied_back_image
-  DOMAIN: ahmed-saeed.site
+  DOMAIN: ahmedsaied.info
   ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
   BUILD_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
 
