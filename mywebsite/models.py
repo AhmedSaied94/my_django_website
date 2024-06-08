@@ -19,6 +19,7 @@ class Project(models.Model):
     github_back_link = models.URLField(null=True, blank=True)
     github_front_link = models.URLField(null=True, blank=True)
     live_link = models.URLField(null=True, blank=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
