@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "django_extensions",
     "gunicorn",
     "whitenoise",
+    "visits",
+    "django_user_agents",
     # 'cloudinary',
     # 'cloudinary_storage',
 ]
@@ -65,6 +67,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_user_agents.middleware.UserAgentMiddleware",
+    "visits.middleware.VisitsMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -208,7 +212,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
     "hide_apps": [],
     "hide_models": [],
-    "order_with_respect_to": ["mywebsite"],
+    "order_with_respect_to": ["mywebsite", "visits", "auth"],
     "custom_links": {
         "Project": [
             {
@@ -228,6 +232,8 @@ JAZZMIN_SETTINGS = {
         "mywebsite.Image": "fas fa-image",
         "mywebsite.Project": "fas fa-project-diagram",
         "mywebsite.Skill": "fas fa-star",
+        "visits.Visit": "fas fa-eye",
+        "visits.VisitHits": "fas fa-chart-line",
     },
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
@@ -243,5 +249,7 @@ JAZZMIN_SETTINGS = {
         "mywebsite.gallery": "vertical_tabs",
         "mywebsite.image": "horizontal_tabs",
         "mywebsite.skill": "vertical_tabs",
+        "visits.visit": "horizontal_tabs",
+        "visits.visithits": "vertical_tabs",
     },
 }
